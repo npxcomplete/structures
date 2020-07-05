@@ -7,7 +7,7 @@ package structures
 import "github.com/npxcomplete/structures/src/queue"
 
 func NewIntPriorityQueue(capacity int, niceness func(int) int) privateIntPriorityQueue {
-	return privateIntPriorityQueue{queue.NewPriorityQueue(capacity, func(item queue.Item) int { niceness(item.(int)) })}
+	return privateIntPriorityQueue{queue.NewPriorityQueue(capacity, func(item queue.Item) int { return niceness(item.(int)) })}
 }
 
 // genny is case sensitive even though this has other meanings in go, so we prefix the intent.

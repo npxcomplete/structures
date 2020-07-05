@@ -10,7 +10,7 @@ import (
 )
 
 func NewExamplesMyCustomTypePriorityQueue(capacity int, niceness func(examples.MyCustomType) int) privateExamplesMyCustomTypePriorityQueue {
-	return privateExamplesMyCustomTypePriorityQueue{queue.NewPriorityQueue(capacity, func(item queue.Item) int { niceness(item.(examples.MyCustomType)) })}
+	return privateExamplesMyCustomTypePriorityQueue{queue.NewPriorityQueue(capacity, func(item queue.Item) int { return niceness(item.(examples.MyCustomType)) })}
 }
 
 // genny is case sensitive even though this has other meanings in go, so we prefix the intent.

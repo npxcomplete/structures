@@ -9,7 +9,7 @@ import (
 type GenericItem generic.Type
 
 func NewGenericItemPriorityQueue(capacity int, niceness func(GenericItem) int) privateGenericItemPriorityQueue {
-	return privateGenericItemPriorityQueue{queue.NewPriorityQueue(capacity, func(item queue.Item) int { niceness(item.(GenericItem)) })}
+	return privateGenericItemPriorityQueue{queue.NewPriorityQueue(capacity, func(item queue.Item) int { return niceness(item.(GenericItem)) })}
 }
 
 // genny is case sensitive even though this has other meanings in go, so we prefix the intent.
